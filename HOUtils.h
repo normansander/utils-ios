@@ -3,6 +3,7 @@
 @interface HOUtils : NSObject
 
 + (void)removeAllChildsOf:view;
++ (SystemSoundID)createSoundID: (NSString*)name;
 + (UIColor*)UIColorFromRGB:(int)rgbValue withAlpha:(float)alpha;
 + (NSInteger)daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime;
 + (void)resetDefaults;

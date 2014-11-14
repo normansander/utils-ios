@@ -7,6 +7,18 @@
      [[view subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
 }
 
++ (SystemSoundID)createSoundID: (NSString*)name
+{
+    NSString *path = [NSString stringWithFormat: @"%@/%@",
+                      [[NSBundle mainBundle] resourcePath], name];
+    
+    
+    NSURL* filePath = [NSURL fileURLWithPath: path isDirectory: NO];
+    SystemSoundID soundID;
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)filePath, &soundID);
+    return soundID;
+}
+
 + (UIColor*)UIColorFromRGB:(int)rgbValue withAlpha:(float)alpha
 {
     return [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:alpha];
